@@ -1,0 +1,2986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mason Mary - Professional Book Launch Specialist. Transform your manuscript into an Amazon bestseller with our proven system.">
+    <title>Mason Mary | Book Launch Specialist</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /*========================================
+          ROOT VARIABLES
+        ========================================*/
+        :root {
+            --primary: #0a1628;
+            --secondary: #1a365d;
+            --gold: #c9a227;
+            --gold-light: #e8c547;
+            --white: #ffffff;
+            --gray: #f8f9fa;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        /*========================================
+          RESET & BASE STYLES
+        ========================================*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /*========================================
+          PRELOADER
+        ========================================*/
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 30px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(201, 162, 39, 0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .preloader-text {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.98); }
+        }
+
+        /*========================================
+          SCROLL ANIMATIONS
+        ========================================*/
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-right.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /*========================================
+          NAVIGATION
+        ========================================*/
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        #navbar.scrolled {
+            background: rgba(10, 22, 40, 0.98);
+            padding: 12px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .logo-text span {
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--primary) !important;
+            padding: 12px 28px !important;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            box-shadow: 0 5px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(201, 162, 39, 0.5);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /*========================================
+          MOBILE MENU
+        ========================================*/
+        #mobileMenu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 350px;
+            height: 100vh;
+            background: var(--primary);
+            z-index: 1001;
+            padding: 100px 40px 40px;
+            transition: right 0.4s ease;
+        }
+
+        #mobileMenu.open {
+            right: 0;
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        #mobileMenu ul li {
+            margin-bottom: 25px;
+        }
+
+        #mobileMenu ul li a {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #mobileMenu ul li a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        #menuOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        #menuOverlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /*========================================
+          BUTTONS
+        ========================================*/
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--primary);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        /*========================================
+          HERO SECTION
+        ========================================*/
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .hero-title .gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-img-main {
+            width: 100%;
+            max-width: 420px;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border: 4px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .hero-img-frame {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100%;
+            max-width: 420px;
+            height: 520px;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .hero-card {
+            position: absolute;
+            background: var(--white);
+            padding: 18px 22px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        .hero-card-1 {
+            bottom: 80px;
+            left: -40px;
+        }
+
+        .hero-card-2 {
+            top: 50px;
+            right: -30px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .hero-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .hero-card-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hero-card-text {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        /*========================================
+          SECTION STYLES
+        ========================================*/
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 8px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title .gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+
+        /*========================================
+          ABOUT SECTION
+        ========================================*/
+        #about {
+            background: var(--gray);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-img-frame {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 480px;
+            border: 4px solid var(--gold);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: -25px;
+            right: -25px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            padding: 25px 35px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.4);
+        }
+
+        .about-experience-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+        }
+
+        .about-experience-text {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .about-content .section-title {
+            text-align: left;
+            font-size: 2.2rem;
+        }
+
+        .about-text {
+            color: var(--text-light);
+            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .about-text strong {
+            color: var(--primary);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px;
+            background: var(--white);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .about-feature h4 {
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+
+        .about-feature p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /*========================================
+          WHY EMAIL SECTION
+        ========================================*/
+        #why-email {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        #why-email .section-title {
+            color: var(--white);
+        }
+
+        #why-email .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
+        .why-icon {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+
+        .why-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .why-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /*========================================
+          METHODOLOGY SECTION
+        ========================================*/
+        #methodology {
+            background: var(--white);
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .method-card {
+            background: var(--gray);
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--gold), var(--gold-light));
+            transition: height 0.4s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            border-color: var(--gold);
+        }
+
+        .method-card:hover::before {
+            height: 100%;
+        }
+
+        .method-phase {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+
+        .method-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .method-card > p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+        .method-list {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .method-list li {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .method-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /*========================================
+          SERVICES SECTION
+        ========================================*/
+        #services {
+            background: var(--gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card.featured {
+            border: 3px solid var(--gold);
+        }
+
+        .service-popular {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--primary);
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px 30px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .service-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .service-header p {
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .service-body {
+            padding: 30px;
+        }
+
+        .service-body > p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .service-features h4 {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .service-features ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .service-features .check {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .service-footer {
+            padding: 22px 30px;
+            background: var(--gray);
+            text-align: center;
+        }
+
+        .service-footer .btn {
+            width: 100%;
+        }
+
+        /*========================================
+          TESTIMONIALS SECTION
+        ========================================*/
+        #testimonials {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        #testimonials .section-title {
+            color: var(--white);
+        }
+
+        #testimonials .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 32px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .author-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .author-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 3px;
+        }
+
+        .author-info .genre {
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .author-email {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .author-email a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .author-email a:hover {
+            color: var(--gold);
+        }
+
+        .book-section {
+            margin: 22px 0;
+            text-align: center;
+        }
+
+        .book-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        .book-image {
+            width: 130px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .book-image:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .amazon-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 10px 18px;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .amazon-badge:hover {
+            background: #ff9900;
+        }
+
+        .amazon-badge:hover span {
+            color: var(--white);
+        }
+
+        .amazon-badge img {
+            height: 18px;
+            width: auto;
+        }
+
+        .amazon-badge span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-stars span {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-results {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+
+        .result-item span {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .result-item strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /*========================================
+          STATS SECTION
+        ========================================*/
+        #stats {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 38px 22px;
+            background: var(--gray);
+            border-radius: 20px;
+            border: 1px solid #eee;
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: var(--gold);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 1.8rem;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /*========================================
+          GUARANTEE SECTION
+        ========================================*/
+        #guarantee {
+            background: var(--gray);
+        }
+
+        .guarantee-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .guarantee-content .section-title {
+            text-align: left;
+        }
+
+        .guarantee-text {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 22px;
+            line-height: 1.9;
+        }
+
+        .guarantee-text strong {
+            color: var(--primary);
+        }
+
+        .guarantee-list {
+            margin-bottom: 28px;
+        }
+
+        .guarantee-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .guarantee-check {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .guarantee-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+        }
+
+        .guarantee-shield {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guarantee-badge h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guarantee-badge p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            max-width: 280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        /*========================================
+          CONTACT SECTION
+        ========================================*/
+        #contact {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        #contact .section-title {
+            color: var(--white);
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 55px;
+            margin-top: 50px;
+        }
+
+        .contact-info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 22px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
+        .contact-info-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info-text h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-info-text p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .contact-info-text a {
+            color: var(--gold);
+        }
+
+        .contact-mason {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 28px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 18px;
+            margin-top: 12px;
+        }
+
+        .contact-mason img {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+        }
+
+        .contact-mason-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-mason-info .title {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-mason-info .stats-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 42px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .form-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group label span {
+            color: var(--gold);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23c9a227'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+
+        select.form-control option {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .form-submit .btn {
+            min-width: 240px;
+        }
+
+        /*========================================
+          FOOTER
+        ========================================*/
+        footer {
+            background: #050d18;
+            padding: 75px 0 28px;
+            color: var(--white);
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 45px;
+            padding-bottom: 45px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand-logo img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+
+        .footer-brand-logo-text span:first-child {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .footer-brand-logo-text span:last-child {
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 280px;
+            margin-bottom: 22px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 22px;
+            position: relative;
+            padding-bottom: 14px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            padding-left: 6px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .newsletter-form button {
+            padding: 14px 22px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border: none;
+            border-radius: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .footer-trust {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .trust-badge-icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .trust-badge span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 28px;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-copyright a {
+            color: var(--gold);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /*========================================
+          BACK TO TOP BUTTON
+        ========================================*/
+        #backToTop {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.5);
+        }
+
+        /*========================================
+          RESPONSIVE STYLES
+        ========================================*/
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .methodology-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-content .section-title {
+                text-align: center;
+            }
+
+            .guarantee-container {
+                grid-template-columns: 1fr;
+            }
+
+            .guarantee-content {
+                text-align: center;
+            }
+
+            .guarantee-content .section-title {
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .why-grid,
+            .methodology-grid,
+            .services-grid,
+            .testimonials-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .contact-form {
+                padding: 28px 20px;
+            }
+
+            .preloader-logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== PRELOADER ========== -->
+    <div id="preloader">
+        <div class="preloader-logo">Mason Mary</div>
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">Loading Excellence...</div>
+    </div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                <img src="mason mary.jpg" alt="Mason Mary" class="logo-img">
+                <div class="logo-text">
+                    <h1>Mason Mary</h1>
+                    <span>Book Launch Specialist</span>
+                </div>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Success Stories</a></li>
+                <li><a href="#contact" class="nav-cta">Start Your Journey</a></li>
+            </ul>
+
+            <div class="mobile-toggle" onclick="openMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== MOBILE MENU ========== -->
+    <div id="menuOverlay" onclick="closeMobileMenu()"></div>
+    <div id="mobileMenu">
+        <div class="mobile-close" onclick="closeMobileMenu()">✕</div>
+        <ul>
+            <li><a href="#hero" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+            <li><a href="#methodology" onclick="closeMobileMenu()">Methodology</a></li>
+            <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+            <li><a href="#testimonials" onclick="closeMobileMenu()">Success Stories</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    ⭐ For Serious Authors Ready to Dominate
+                </div>
+
+                <h1 class="hero-title">
+                    Transform Your Manuscript Into an <span class="gold">Amazon Category Leader</span>
+                </h1>
+
+                <p class="hero-description">
+                    Stop guessing. Stop hoping. Start executing a strategic launch campaign backed by 10+ years of market research, algorithm analysis, and real-world results. We architect your path to category dominance through documented, accountable, email-based collaboration.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">247</span>
+                        <span class="hero-stat-label">Bestsellers 2024</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">94%</span>
+                        <span class="hero-stat-label">Success Rate</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">17</span>
+                        <span class="hero-stat-label">Days Avg to #1</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        🚀 Request Market Analysis
+                    </a>
+                    <a href="#methodology" class="btn btn-secondary">
+                        ▶ View Our Process
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-img-frame"></div>
+                <img src="mason mary.jpg" alt="Mason Mary - Book Launch Specialist" class="hero-img-main">
+
+                <div class="hero-card hero-card-1">
+                    <div class="hero-card-icon">🏆</div>
+                    <div class="hero-card-number">247</div>
+                    <div class="hero-card-text">#1 Rankings</div>
+                </div>
+
+                <div class="hero-card hero-card-2">
+                    <div class="hero-card-icon">📈</div>
+                    <div class="hero-card-number">$2.4M+</div>
+                    <div class="hero-card-text">Author Revenue</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about">
+        <div class="container about-container">
+            <div class="about-image animate-left">
+                <div class="about-img-frame"></div>
+                <img src="mason mary.jpg" alt="Mason Mary" class="about-img">
+                <div class="about-experience">
+                    <span class="about-experience-number">10+</span>
+                    <span class="about-experience-text">Years Experience</span>
+                </div>
+            </div>
+
+            <div class="about-content animate-right">
+                <div class="section-badge">✦ About Mason Mary</div>
+
+                <h2 class="section-title">
+                    Your Strategic Partner in <span class="gold">Publishing Success</span>
+                </h2>
+
+                <p class="about-text">
+                    I'm <strong>Mason Mary</strong>, a dedicated book launch specialist who has spent over a decade mastering the art and science of turning manuscripts into bestsellers. My journey began when I realized most authors struggle not because their books aren't good enough, but because they lack strategic positioning in an overcrowded marketplace.
+                </p>
+
+                <p class="about-text">
+                    Since then, I've developed a <strong>proprietary 7-phase launch system</strong> that has successfully guided 247 authors to Amazon #1 rankings in 2024 alone. My approach is data-driven, systematically documented, and entirely email-based—ensuring complete accountability and respect for your creative time.
+                </p>
+
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">✉️</div>
+                        <div>
+                            <h4>Email-Only Collaboration</h4>
+                            <p>Complete documentation & accountability</p>
+                        </div>
+                    </div>
+
+                    <div class="about-feature">
+                        <div class="about-feature-icon">📊</div>
+                        <div>
+                            <h4>Data-Driven Strategies</h4>
+                            <p>Every decision backed by research</p>
+                        </div>
+                    </div>
+
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🏆</div>
+                        <div>
+                            <h4>Proven Track Record</h4>
+                            <p>247 bestsellers in 2024 alone</p>
+                        </div>
+                    </div>
+
+                    <div class="about-feature">
+                        <div class="about-feature-icon">🛡️</div>
+                        <div>
+                            <h4>Results Guarantee</h4>
+                            <p>Top 10 or we work for free</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY EMAIL SECTION ========== -->
+    <section id="why-email">
+        <div class="container">
+            <div class="section-header animate">
+                <div class="section-badge">✉️ Our Approach</div>
+                <h2 class="section-title">
+                    Why Elite Authors Choose <span class="gold">Email-First</span> Service
+                </h2>
+                <p class="section-subtitle">
+                    Crystal-clear communication, complete documentation, and zero wasted time on unnecessary meetings.
+                </p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card animate">
+                    <div class="why-icon">📄</div>
+                    <h3>Complete Documentation</h3>
+                    <p>Every strategy, decision, and update documented in your inbox. Complete accountability trail you can reference anytime.</p>
+                </div>
+
+                <div class="why-card animate">
+                    <div class="why-icon">⏰</div>
+                    <h3>Asynchronous Excellence</h3>
+                    <p>Review strategies during your optimal hours. Ask questions on your timeline. Make decisions without pressure.</p>
+                </div>
+
+                <div class="why-card animate">
+                    <div class="why-icon">🎯</div>
+                    <h3>Forced Clarity</h3>
+                    <p>Written communication eliminates ambiguity. Every recommendation comes with complete analysis in black and white.</p>
+                </div>
+
+                <div class="why-card animate">
+                    <div class="why-icon">🚀</div>
+                    <h3>Maximum Efficiency</h3>
+                    <p>We invest time in deeper research and optimization, not small talk. Your launch benefits from cutting-edge intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== METHODOLOGY SECTION ========== -->
+    <section id="methodology">
+        <div class="container">
+            <div class="section-header animate">
+                <div class="section-badge">⚙️ Our System</div>
+                <h2 class="section-title">
+                    The 7-Phase <span class="gold">Category Domination</span> Framework
+                </h2>
+                <p class="section-subtitle">
+                    Developed over 247 successful launches and customized to your book's unique market position.
+                </p>
+            </div>
+
+            <div class="methodology-grid">
+                <div class="method-card animate">
+                    <span class="method-phase">Phase 1</span>
+                    <h3>Deep Market Intelligence</h3>
+                    <p>We analyze 50-100 potential categories, evaluating competition levels and strategic opportunities.</p>
+                    <ul class="method-list">
+                        <li>Category competition analysis</li>
+                        <li>Sales-to-rank projections</li>
+                        <li>25-page Market Report</li>
+                    </ul>
+                </div>
+
+                <div class="method-card animate">
+                    <span class="method-phase">Phase 2</span>
+                    <h3>Strategic Positioning</h3>
+                    <p>Your book's metadata engineered for maximum algorithmic visibility and reader appeal.</p>
+                    <ul class="method-list">
+                        <li>Complete metadata package</li>
+                        <li>10-category strategic plan</li>
+                        <li>Optimized book description</li>
+                    </ul>
+                </div>
+
+                <div class="method-card animate">
+                    <span class="method-phase">Phase 3</span>
+                    <h3>Pre-Launch Foundation</h3>
+                    <p>Build momentum with advance readers, reviews, and email list building strategies.</p>
+                    <ul class="method-list">
+                        <li>Advance reader recruitment</li>
+                        <li>Reader magnet & landing page</li>
+                        <li>Launch team coordination</li>
+                    </ul>
+                </div>
+
+                <div class="method-card animate">
+                    <span class="method-phase">Phase 4</span>
+                    <h3>Pricing & Promotion</h3>
+                    <p>Pricing as a strategic lever for maximum launch impact and long-term revenue.</p>
+                    <ul class="method-list">
+                        <li>Dynamic pricing strategy</li>
+                        <li>Promotional calendar</li>
+                        <li>Revenue projection modeling</li>
+                    </ul>
+                </div>
+
+                <div class="method-card animate">
+                    <span class="method-phase">Phase 5</span>
+                    <h3>Launch Velocity</h3>
+                    <p>Orchestrated momentum with hour-by-hour timeline and real-time monitoring.</p>
+                    <ul class="method-list">
+                        <li>Launch Week Command Center</li>
+                        <li>Hour-by-hour execution</li>
+                        <li>Real-time optimization</li>
+                    </ul>
+                </div>
+
+                <div class="method-card animate">
+                    <span class="method-phase">Phase 6-7</span>
+                    <h3>Momentum & Growth</h3>
+                    <p>Prevent post-launch collapse and build long-term author platform for sustained success.</p>
+                    <ul class="method-list">
+                        <li>30-day optimization plan</li>
+                        <li>6-month development roadmap</li>
+                        <li>Compound growth modeling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header animate">
+                <div class="section-badge">💎 Launch Programs</div>
+                <h2 class="section-title">
+                    Strategic Launch <span class="gold">Programs</span>
+                </h2>
+                <p class="section-subtitle">
+                    All programs include email-only communication and our bestseller guarantee.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <div class="service-header">
+                        <div class="service-icon">🚀</div>
+                        <h3>Bronze</h3>
+                        <p>Amazon-Focused Launch</p>
+                    </div>
+                    <div class="service-body">
+                        <p>Perfect for authors with finished manuscripts ready for a focused Amazon-only launch campaign.</p>
+                        <div class="service-features">
+                            <h4>What's Included:</h4>
+                            <ul>
+                                <li><span class="check">✓</span> 30-Day Amazon Campaign</li>
+                                <li><span class="check">✓</span> Category Research & Selection</li>
+                                <li><span class="check">✓</span> Keyword Optimization</li>
+                                <li><span class="check">✓</span> Book Description Optimization</li>
+                                <li><span class="check">✓</span> Weekly Email Reports</li>
+                                <li><span class="check">✓</span> 48-Hour Response Guarantee</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-footer">
+                        <a href="#contact" class="btn btn-primary">Inquire About Bronze</a>
+                    </div>
+                </div>
+
+                <div class="service-card featured animate">
+                    <span class="service-popular">Most Popular</span>
+                    <div class="service-header">
+                        <div class="service-icon">👑</div>
+                        <h3>Silver</h3>
+                        <p>Multi-Platform Domination</p>
+                    </div>
+                    <div class="service-body">
+                        <p>For authors serious about building a lasting author platform with multi-platform launch strategy.</p>
+                        <div class="service-features">
+                            <h4>Everything in Bronze, Plus:</h4>
+                            <ul>
+                                <li><span class="check">✓</span> 90-Day Extended Campaign</li>
+                                <li><span class="check">✓</span> Multi-Platform Strategy</li>
+                                <li><span class="check">✓</span> Social Media Advertising</li>
+                                <li><span class="check">✓</span> Email List Building</li>
+                                <li><span class="check">✓</span> A/B Testing & Optimization</li>
+                                <li><span class="check">✓</span> Bi-Weekly Strategy Reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-footer">
+                        <a href="#contact" class="btn btn-primary">Inquire About Silver</a>
+                    </div>
+                </div>
+
+                <div class="service-card animate">
+                    <div class="service-header">
+                        <div class="service-icon">💎</div>
+                        <h3>Gold</h3>
+                        <p>Complete Transformation</p>
+                    </div>
+                    <div class="service-body">
+                        <p>For authors ready to build a professional, long-term publishing business with complete support.</p>
+                        <div class="service-features">
+                            <h4>Everything in Silver, Plus:</h4>
+                            <ul>
+                                <li><span class="check">✓</span> 6-Month Extended Support</li>
+                                <li><span class="check">✓</span> Professional Author Website</li>
+                                <li><span class="check">✓</span> Complete Sales Funnel</li>
+                                <li><span class="check">✓</span> Email Automation System</li>
+                                <li><span class="check">✓</span> Multi-Book Series Strategy</li>
+                                <li><span class="check">✓</span> 24-Hour Priority Response</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-footer">
+                        <a href="#contact" class="btn btn-primary">Inquire About Gold</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header animate">
+                <div class="section-badge">⭐ Success Stories</div>
+                <h2 class="section-title">
+                    Authors Who <span class="gold">Transformed</span> Their Careers
+                </h2>
+                <p class="section-subtitle">
+                    Real authors. Real results. Every success story started with a simple inquiry.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- JAMES VICTOR - UPDATED IMAGES -->
+                <div class="testimonial-card animate">
+                    <div class="testimonial-author">
+                        <a href="https://www.amazon.com/Outcast-Marines-Boxed-James-Victor-ebook/dp/B08127NNPB" target="_blank">
+                            <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/u3s2ssa4irudks15rt5o8pnfc4._SY450_CR0%2C0%2C450%2C450_.jpg" alt="James Victor" class="author-image">
+                        </a>
+                        <div class="author-info">
+                            <h4>James Victor</h4>
+                            <p class="genre">Science Fiction & Fantasy</p>
+                            <p class="author-email">
+                                ✉️ <a href="mailto:jamesdavidvictor6@gmail.com">jamesdavidvictor6@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="book-section">
+                        <div class="book-wrapper">
+                            <a href="https://www.amazon.com/Outcast-Marines-Boxed-James-Victor-ebook/dp/B08127NNPB" target="_blank">
+                                <img src="https://m.media-amazon.com/images/I/5128dtK1cKL._SY445_SX342_QL70_FMwebp_.jpg" alt="James Victor's Book" class="book-image">
+                            </a>
+                        </div>
+                        <a href="https://www.amazon.com/Outcast-Marines-Boxed-James-Victor-ebook/dp/B08127NNPB" target="_blank" class="amazon-badge">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                            <span>View on Amazon</span>
+                        </a>
+                    </div>
+
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        Mason's strategic approach transformed my entire book launch. The email-only communication was perfect—detailed, documented, and allowed me to review everything carefully. Hit #1 in my category in just 18 days!
+                    </p>
+
+                    <div class="testimonial-results">
+                        <div class="result-item">
+                            <span>Peak Rank:</span>
+                            <strong>#1 in Category</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Time to #1:</span>
+                            <strong>18 Days</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KATE CULLEN -->
+                <div class="testimonial-card animate">
+                    <div class="testimonial-author">
+                        <a href="https://www.amazon.com/stores/Kate-Cullen/author/B00J8JYIVO" target="_blank">
+                            <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/7o7uv5f5dq8hgfmfka20vlta47._SX450_CR0%2C0%2C450%2C450_.jpg" alt="Kate Cullen" class="author-image">
+                        </a>
+                        <div class="author-info">
+                            <h4>Kate Cullen</h4>
+                            <p class="genre">Fiction & Romance</p>
+                            <p class="author-email">
+                                ✉️ <a href="mailto:katecullen473@gmail.com">katecullen473@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="book-section">
+                        <div class="book-wrapper">
+                            <a href="https://www.amazon.com/stores/Kate-Cullen/author/B00J8JYIVO" target="_blank">
+                                <img src="https://m.media-amazon.com/images/I/916zl+z9jLL._AC_UY218_.jpg" alt="Kate Cullen's Book" class="book-image">
+                            </a>
+                        </div>
+                        <a href="https://www.amazon.com/stores/Kate-Cullen/author/B00J8JYIVO" target="_blank" class="amazon-badge">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                            <span>View on Amazon</span>
+                        </a>
+                    </div>
+
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        As a debut fiction author, I was overwhelmed by the publishing landscape. Mason's system cut through the noise completely. The category research alone was worth the entire investment!
+                    </p>
+
+                    <div class="testimonial-results">
+                        <div class="result-item">
+                            <span>Peak Rank:</span>
+                            <strong>#1 in Category</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Time to #1:</span>
+                            <strong>14 Days</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RACHAEL C. DUNCAN -->
+                <div class="testimonial-card animate">
+                    <div class="testimonial-author">
+                        <a href="https://www.amazon.com/stores/Rachael-C.-Duncan/author/B00P89NCRU" target="_blank">
+                            <img src="Rachael C. Duncan.webp" alt="Rachael C. Duncan" class="author-image">
+                        </a>
+                        <div class="author-info">
+                            <h4>Rachael C. Duncan</h4>
+                            <p class="genre">Romance & Drama</p>
+                            <p class="author-email">
+                                ✉️ <a href="mailto:authorrachaelduncan@gmail.com">authorrachaelduncan@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="book-section">
+                        <div class="book-wrapper">
+                            <a href="https://www.amazon.com/stores/Rachael-C.-Duncan/author/B00P89NCRU" target="_blank">
+                                <img src="https://m.media-amazon.com/images/I/81nV6g8LrDL._AC_UY218_.jpg" alt="Rachael C. Duncan's Book" class="book-image">
+                            </a>
+                        </div>
+                        <a href="https://www.amazon.com/stores/Rachael-C.-Duncan/author/B00P89NCRU" target="_blank" class="amazon-badge">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+                            <span>View on Amazon</span>
+                        </a>
+                    </div>
+
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+
+                    <p class="testimonial-text">
+                        I've launched multiple books before, but never with this level of strategic precision. Mason's methodology is genuinely next-level. Hit #1 faster than any of my previous launches!
+                    </p>
+
+                    <div class="testimonial-results">
+                        <div class="result-item">
+                            <span>Peak Rank:</span>
+                            <strong>#1 in Category</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Time to #1:</span>
+                            <strong>12 Days</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS SECTION ========== -->
+    <section id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number">247</div>
+                    <div class="stat-label">Bestsellers Launched</div>
+                </div>
+
+                <div class="stat-card animate">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+
+                <div class="stat-card animate">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">Avg. Days to #1</div>
+                </div>
+
+                <div class="stat-card animate">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-number">34+</div>
+                    <div class="stat-label">Genres Mastered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GUARANTEE SECTION ========== -->
+    <section id="guarantee">
+        <div class="container guarantee-container">
+            <div class="guarantee-content animate-left">
+                <div class="section-badge">🛡️ Our Promise</div>
+
+                <h2 class="section-title">
+                    Iron-Clad <span class="gold">Bestseller Guarantee</span>
+                </h2>
+
+                <p class="guarantee-text">
+                    We're so confident in our system that we offer this simple guarantee: <strong>If your book doesn't hit Top 10 in your category within 90 days, we'll continue working for free until it does.</strong>
+                </p>
+
+                <p class="guarantee-text">
+                    Why can we offer this? Because our system works. We've done it 247 times in 2024 alone. We know exactly what it takes to hit bestseller status.
+                </p>
+
+                <ul class="guarantee-list">
+                    <li>
+                        <span class="guarantee-check">✓</span>
+                        Top 10 ranking in your selected category
+                    </li>
+                    <li>
+                        <span class="guarantee-check">✓</span>
+                        Within 90 days of launch execution
+                    </li>
+                    <li>
+                        <span class="guarantee-check">✓</span>
+                        Verified Amazon Best Sellers Rank
+                    </li>
+                    <li>
+                        <span class="guarantee-check">✓</span>
+                        Complete documentation throughout
+                    </li>
+                </ul>
+
+                <a href="#contact" class="btn btn-primary">
+                    🚀 Claim Your Guarantee
+                </a>
+            </div>
+
+            <div class="guarantee-badge animate-right">
+                <div class="guarantee-shield">🛡️</div>
+                <h3>100% Results Guaranteed</h3>
+                <p>Top 10 in 90 days or we work for free until you get there. No questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header animate">
+                <div class="section-badge">✉️ Start Your Journey</div>
+                <h2 class="section-title">
+                    Let's Make Your Book a <span class="gold">Bestseller</span>
+                </h2>
+                <p class="section-subtitle">
+                    Fill out this form and receive your custom launch strategy via email within 48 hours.
+                </p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info animate-left">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">✉️</div>
+                        <div class="contact-info-text">
+                            <h4>Email Communication</h4>
+                            <p>All strategy delivered via detailed emails</p>
+                            <a href="mailto:masonmary536@gmail.com">masonmary536@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">⏰</div>
+                        <div class="contact-info-text">
+                            <h4>Response Time</h4>
+                            <p>Custom strategy within 48 hours</p>
+                            <span style="color: rgba(255,255,255,0.6);">Mon-Fri, 9AM-6PM EST</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">🔒</div>
+                        <div class="contact-info-text">
+                            <h4>Complete Confidentiality</h4>
+                            <p>Your book details are fully protected</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-mason">
+                        <img src="mason mary.jpg" alt="Mason Mary">
+                        <div class="contact-mason-info">
+                            <h4>Mason Mary</h4>
+                            <p class="title">Book Launch Specialist</p>
+                            <p class="stats-text">10+ years | 247 bestsellers | 94% success rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form animate-right">
+                    <div class="form-header">
+                        <h3>Project Inquiry Form</h3>
+                        <p>Tell us about your book and goals</p>
+                    </div>
+
+                    <form action="https://formspree.io/f/xlgplgvj" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name <span>*</span></label>
+                                <input type="text" name="firstName" class="form-control" placeholder="Your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name <span>*</span></label>
+                                <input type="text" name="lastName" class="form-control" placeholder="Your last name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address <span>*</span></label>
+                            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Book Title</label>
+                                <input type="text" name="bookTitle" class="form-control" placeholder="Your book title">
+                            </div>
+                            <div class="form-group">
+                                <label>Genre <span>*</span></label>
+                                <select name="genre" class="form-control" required>
+                                    <option value="">Select genre...</option>
+                                    <option value="romance">Fiction - Romance</option>
+                                    <option value="thriller">Fiction - Thriller</option>
+                                    <option value="fantasy">Fiction - Fantasy</option>
+                                    <option value="scifi">Fiction - Sci-Fi</option>
+                                    <option value="business">Non-Fiction - Business</option>
+                                    <option value="selfhelp">Non-Fiction - Self-Help</option>
+                                    <option value="health">Non-Fiction - Health</option>
+                                    <option value="memoir">Non-Fiction - Memoir</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Manuscript Status <span>*</span></label>
+                                <select name="status" class="form-control" required>
+                                    <option value="">Select status...</option>
+                                    <option value="finished">Finished & Edited</option>
+                                    <option value="editing">In Final Editing</option>
+                                    <option value="progress">In Progress</option>
+                                    <option value="planning">Planning Stage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Program Interest</label>
+                                <select name="program" class="form-control">
+                                    <option value="">Select program...</option>
+                                    <option value="bronze">Bronze</option>
+                                    <option value="silver">Silver (Most Popular)</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="unsure">Need Recommendation</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full">
+                            <label>Tell Us About Your Book <span>*</span></label>
+                            <textarea name="message" class="form-control" placeholder="Describe your book, your goals, and what you hope to achieve..." required></textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">
+                                🚀 Submit Project Inquiry
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-brand-logo">
+                        <img src="mason mary.jpg" alt="Mason Mary">
+                        <div class="footer-brand-logo-text">
+                            <span>Mason Mary</span>
+                            <span>Book Launch Specialist</span>
+                        </div>
+                    </div>
+                    <p>Transforming manuscripts into market leaders through strategic positioning, algorithmic understanding, and relentless execution.</p>
+                    <div class="footer-social">
+                        <a href="#">in</a>
+                        <a href="#">𝕏</a>
+                        <a href="#">ig</a>
+                        <a href="mailto:masonmary536@gmail.com">✉</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#methodology">Methodology</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Bronze Launch</a></li>
+                        <li><a href="#services">Silver Launch</a></li>
+                        <li><a href="#services">Gold Launch</a></li>
+                        <li><a href="#contact">Free Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Get exclusive insights on Amazon algorithms and author success strategies.</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/xlgplgvj" method="POST">
+                        <input type="email" name="newsletter-email" placeholder="Your email" required>
+                        <button type="submit">→</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-trust">
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">🔒</span>
+                    <span>100% Secure</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">🛡️</span>
+                    <span>Confidential</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">🏆</span>
+                    <span>247 Bestsellers</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">⭐</span>
+                    <span>94% Success Rate</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">✉️</span>
+                    <span>Email-Only Service</span>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 <a href="#">Mason Mary</a> | Book Launch Specialist. All Rights Reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Guarantee Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BACK TO TOP BUTTON ========== -->
+    <div id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // ===== PRELOADER =====
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('preloader').classList.add('loaded');
+            }, 2000);
+        });
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            var backToTop = document.getElementById('backToTop');
+
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Scroll animations
+            animateOnScroll();
+        });
+
+        // ===== SCROLL TO TOP =====
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== MOBILE MENU =====
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('menuOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('menuOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== SCROLL ANIMATION =====
+        function animateOnScroll() {
+            var elements = document.querySelectorAll('.animate, .animate-left, .animate-right');
+            
+            elements.forEach(function(element) {
+                var elementTop = element.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('show');
+                }
+            });
+        }
+
+        // Initial animation check
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+        });
+    </script>
+
+</body>
+</html>
